@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMG Himalayas - Nepal Tourism Blog</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">
+            <img src="logo.png" alt="OMG Himalayas" id="logo">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#guides">Guides</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Toggle theme">🌞</button>
+        <button class="mobile-menu" aria-label="Toggle menu">☰</button>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover Nepal's Magic</h1>
+            <p>Your gateway to the breathtaking Himalayas and rich cultural heritage</p>
+            <a href="#destinations" class="cta-btn">Explore Destinations</a>
+        </div>
+    </section>
+
+    <script>
+const nav = document.querySelector('nav');
+const logo = document.getElementById('logo');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+        nav.classList.add('sticky');
+    } else {
+        nav.classList.remove('sticky');
+    }
+});
+
+// Mobile Menu Toggle
+const mobileMenu = document.querySelector('.mobile-menu');
+const navLinks = document.querySelector('.nav-links');
+
+mobileMenu.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+// Theme Toggle
+const themeToggle = document.querySelector('.theme-toggle');
+let isDark = false;
+
+themeToggle.addEventListener('click', () => {
+    isDark = !isDark;
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    themeToggle.textContent = isDark ? '🌜' : '🌞';
+
+    // Change logo based on theme
+    logo.src = isDark ? 'blacklogo.png' : 'logo.png';
+});
+
+    </script>
+    <!-- Previous nav and hero section remain the same -->
+
+    <main>
+        <section id="featured-destinations" class="section">
+            <div class="container">
+                <h2 class="section-title">Popular Destinations</h2>
+                <div class="destination-grid">
+                    <article class="destination-card">
+                        <div class="card-image">
+                            <img src="/api/placeholder/400/300" alt="Everest Base Camp">
+                            <span class="difficulty-badge advanced">Challenging</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>Everest Base Camp Trek</h3>
+                            <p class="duration">14 Days</p>
+                            <p class="description">Journey to the foot of the world's highest peak through Sherpa villages and stunning Himalayan landscapes.</p>
+                            <div class="card-meta">
+                                <span>⭐ 4.9 (128 reviews)</span>
+                                <span>From $1,600</span>
+                            </div>
+                            <a href="#" class="btn-secondary">View Details</a>
+                        </div>
+                    </article>
+
+                    <article class="destination-card">
+                        <div class="card-image">
+                            <img src="/api/placeholder/400/300" alt="Annapurna Circuit">
+                            <span class="difficulty-badge moderate">Moderate</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>Annapurna Circuit</h3>
+                            <p class="duration">12-16 Days</p>
+                            <p class="description">Experience diverse landscapes from subtropical forests to high alpine terrain on this classic trek.</p>
+                            <div class="card-meta">
+                                <span>⭐ 4.8 (156 reviews)</span>
+                                <span>From $1,400</span>
+                            </div>
+                            <a href="#" class="btn-secondary">View Details</a>
+                        </div>
+                    </article>
+
+                    <article class="destination-card">
+                        <div class="card-image">
+                            <img src="/api/placeholder/400/300" alt="Kathmandu Valley">
+                            <span class="difficulty-badge easy">Easy</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>Kathmandu Valley Heritage Tour</h3>
+                            <p class="duration">3-5 Days</p>
+                            <p class="description">Explore UNESCO World Heritage sites, ancient temples, and vibrant local culture in the heart of Nepal.</p>
+                            <div class="card-meta">
+                                <span>⭐ 4.7 (203 reviews)</span>
+                                <span>From $400</span>
+                            </div>
+                            <a href="#" class="btn-secondary">View Details</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiences" class="section bg-light">
+            <div class="container">
+                <h2 class="section-title">Unique Experiences</h2>
+                <div class="experience-grid">
+                    <div class="experience-item">
+                        <div class="icon">🏔️</div>
+                        <h3>Mountain Adventures</h3>
+                        <ul>
+                            <li>Peak climbing expeditions</li>
+                            <li>Helicopter tours</li>
+                            <li>Alpine photography</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <div class="icon">🧘</div>
+                        <h3>Cultural Immersion</h3>
+                        <ul>
+                            <li>Meditation retreats</li>
+                            <li>Cooking classes</li>
+                            <li>Traditional art workshops</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <div class="icon">🦁</div>
+                        <h3>Wildlife Safari</h3>
+                        <ul>
+                            <li>Chitwan National Park</li>
+                            <li>Bird watching tours</li>
+                            <li>Tiger tracking</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="latest-blog" class="section">
+            <div class="container">
+                <h2 class="section-title">Latest from the Blog</h2>
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <img src="/api/placeholder/400/250" alt="Best time to visit Nepal">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span>Travel Tips</span>
+                                <span>5 min read</span>
+                            </div>
+                            <h3>Best Time to Visit Nepal: A Season-by-Season Guide</h3>
+                            <p>Discover the perfect time for your Nepal adventure with our comprehensive guide to seasons, festivals, and weather patterns.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <img src="/api/placeholder/400/250" alt="Nepali cuisine">
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span>Food & Culture</span>
+                                <span>4 min read</span>
+                            </div>
+                            <h3>Essential Nepali Dishes You Must Try</h3>
+                            <p>From momos to dal bhat, explore the rich flavors and cultural significance of traditional Nepali cuisine.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="section bg-accent">
+            <div class="container">
+                <h2 class="section-title text-white">Traveler Stories</h2>
+                <div class="testimonial-slider">
+                    <div class="testimonial">
+                        <p>"The trek to Everest Base Camp was life-changing. Our guide Pemba was knowledgeable and supportive throughout the journey. OMG Himalayas made the experience unforgettable!"</p>
+                        <div class="testimonial-author">
+                            <span class="name">Sarah Mitchell</span>
+                            <span class="location">Australia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="planning-guide" class="section">
+            <div class="container">
+                <h2 class="section-title">Plan Your Trip</h2>
+                <div class="planning-grid">
+                    <div class="planning-card">
+                        <h3>Visa Information</h3>
+                        <p>Most visitors can obtain a visa on arrival at Tribhuvan International Airport. Fees vary based on length of stay:</p>
+                        <ul>
+                            <li>15 days: $30</li>
+                            <li>30 days: $50</li>
+                            <li>90 days: $125</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="planning-card">
+                        <h3>Best Time to Visit</h3>
+                        <ul>
+                            <li>October-November: Peak season, clear skies</li>
+                            <li>March-May: Spring, rhododendrons bloom</li>
+                            <li>December-February: Cold but clear</li>
+                            <li>June-September: Monsoon season</li>
+                        </ul>
+                    </div>
+
+                    <div class="planning-card">
+                        <h3>Essential Tips</h3>
+                        <ul>
+                            <li>Get travel insurance covering high altitudes</li>
+                            <li>Book accommodations in advance during peak season</li>
+                            <li>Respect local customs and dress modestly</li>
+                            <li>Carry cash as cards aren't widely accepted</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Contact Us</h4>
+                    <p>Email: info@omghimalayas.com</p>
+                    <p>Phone: +977-1-4XXXXXX</p>
+                    <p>Address: Thamel, Kathmandu, Nepal</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for travel tips and exclusive offers</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit" class="btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Khatri. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
