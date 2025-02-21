@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <title>Everest Base Camp Trek - OMG Himalayas</title>
+  
+  <style>
+    /* CSS Variables */
+    :root {
+      --primary-color: #DC2626;
+      --text-color: #1F2937;
+      --bg-color: #FFFFFF;
+      --nav-bg: rgba(255, 255, 255, 0.9);
+      --card-bg: #F3F4F6;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="dark"] {
+      --text-color: #F3F4F6;
+      --bg-color: #1F2937;
+      --nav-bg: rgba(31, 41, 55, 0.9);
+      --card-bg: #374151;
+      --shadow: rgba(0, 0, 0, 0.3);
+    }
+
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding-top: 80px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Navigation Styles */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      transition: padding 0.3s;
+    }
+
+    .logo img {
+      height: 60px;
+      transition: height 0.3s;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: var(--primary-color);
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .theme-toggle, .mobile-menu {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      outline: none;
+      color: var(--text-color);
+    }
+
+    /* Main Content Styles */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .hero-section {
+      position: relative;
+      height: 60vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                  url('wallever.jpeg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 1rem;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-color);
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+
+    /* Timeline Styles */
+    .timeline {
+      position: relative;
+      margin: 2rem 0;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px var(--shadow);
+      transition: transform 0.3s;
+    }
+
+    .timeline-item:hover {
+      transform: scale(1.02);
+    }
+
+    .timeline-day {
+      flex-shrink: 0;
+      width: 100px;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    /* Info Grid Styles */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .info-card {
+      background-color: var(--card-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px var(--shadow);
+    }
+
+    .info-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .info-card ul {
+      list-style-position: inside;
+      margin-top: 1rem;
+    }
+
+    .info-card li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer Styles */
+    .footer {
+      background-color: var(--card-bg);
+      padding: 4rem 2rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-column ul li a {
+      color: var(--text-color);
+      text-decoration: none;
+    }
+
+    .footer-column ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .newsletter-form input[type="email"] {
+      flex: 1;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--shadow);
+      border-radius: 4px;
+      outline: none;
+    }
+
+    .newsletter-form button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: var(--primary-color);
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .newsletter-form button:hover {
+      background-color: #b71c1c;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--shadow);
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--nav-bg);
+        padding: 1rem;
+        flex-direction: column;
+        align-items: center;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .mobile-menu {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="OMG Himalayas" id="logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#destinations">Destinations</a></li>
+      <li><a href="#guides">Guides</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" aria-label="Toggle theme">🌞</button>
+    <button class="mobile-menu" aria-label="Toggle menu">☰</button>
+  </nav>
+
+  <main>
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>Everest Base Camp Trek</h1>
+        <p>Journey to the foot of the world's highest peak through breathtaking Himalayas.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <section class="section">
+        <h2>Overview</h2>
+        <p>The Everest Base Camp (EBC) trek is one of the most iconic and sought-after trekking routes in the world, attracting adventurers from all corners of the globe. Stretching through the breathtaking Khumbu Valley in Nepal, this incredible journey takes trekkers on an unforgettable adventure, offering panoramic views of the world’s highest peak, Mount Everest, alongside a host of other majestic Himalayan mountains, including Lhotse, Nuptse, and Makalu.</p>
+
+        <p>The trek combines the thrill of high-altitude adventure with rich cultural experiences, as trekkers pass through Sherpa villages, ancient monasteries, and traditional Buddhist stupas. Along the way, visitors get a chance to interact with the local Sherpa people, learning about their unique customs, traditions, and lifestyles. These encounters offer a deep dive into the cultural heritage of the region, making the trek as much about the people as it is about the natural surroundings.</p>
+
+        <p>The landscapes encountered on the EBC trek are nothing short of spectacular. From lush green forests to rugged alpine terrain, icy rivers, and rocky moraines, every day brings a new scene of natural beauty. Trekkers also pass through Sagarmatha National Park, a UNESCO World Heritage Site, home to diverse wildlife such as the Himalayan tahr, snow leopards, and various bird species. The route is dotted with prayer flags and stone mani walls, which add to the spiritual and serene atmosphere of the trek.</p>
+
+        <p>Ultimately, the journey to Everest Base Camp is not just about reaching a destination; it is about embracing the challenges of the trek, taking in the awe-inspiring views, and experiencing the warmth and hospitality of the Sherpa people. The sense of achievement when finally standing at the base of Everest, looking up at its towering presence, is an experience that stays with trekkers for a lifetime.</p>
+      </section>
+
+      <section class="section">
+        <h2>Trek Itinerary</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-day">Day 1</div>
+            <div class="timeline-content">
+              <strong>Flight from Kathmandu to Lukla, trek to Phakding (2,610m)</strong>
+              <p>Begin your adventure with a scenic flight to Lukla, followed by an easy trek to Phakding.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-day">Day 2</div>
+            <div class="timeline-content">
+              <strong>Trek to Namche Bazaar (3,440m)</strong>
+              <p>Challenging ascent to the vibrant Sherpa capital of Namche Bazaar.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-day">Day 3</div>
+            <div class="timeline-content">
+              <strong>Acclimatization Day in Namche Bazaar</strong>
+              <p>Rest and acclimatize. Explore Namche Bazaar and enjoy panoramic views of Everest and other peaks.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-day">Day 4</div>
+            <div class="timeline-content">
+              <strong>Trek to Tengboche (3,860m)</strong>
+              <p>Descend to the Dudh Koshi River, cross a bridge, and make your way up to the beautiful village of Tengboche, home to a famous monastery.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-day">Day 5</div>
+            <div class="timeline-content">
+              <strong>Trek to Dingboche (4,410m)</strong>
+              <p>Head further up the valley, passing through Pangboche and reaching the peaceful village of Dingboche.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-day">Day 6</div>
+            <div class="timeline-content">
+              <strong>Acclimatization Day in Dingboche</strong>
+              <p>Take a day to acclimatize, with an optional hike up to Nagarjun Hill for stunning views of Everest, Lhotse, and Makalu.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-day">Day 7</div>
+            <div class="timeline-content">
+              <strong>Trek to Lobuche (4,910m)</strong>
+              <p>Continue the trek to Lobuche, passing through the memorials of fallen climbers.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-day">Day 8</div>
+            <div class="timeline-content">
+              <strong>Trek to Everest Base Camp (5,364m), Return to Gorak Shep (5,140m)</strong>
+              <p>Reach Everest Base Camp for a truly unforgettable experience, then return to Gorak Shep for the night.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-day">Day 9</div>
+            <div class="timeline-content">
+              <strong>Hike to Kala Patthar (5,545m), Trek down to Pheriche (4,240m)</strong>
+              <p>Early morning hike to Kala Patthar for sunrise views of Everest, then descend to Pheriche for rest.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-day">Day 10</div>
+            <div class="timeline-content">
+              <strong>Trek back to Namche Bazaar</strong>
+              <p>Retrace your steps back to Namche Bazaar, enjoying the downhill trek and beautiful scenery.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-day">Day 11</div>
+            <div class="timeline-content">
+              <strong>Trek to Lukla</strong>
+              <p>Complete the trek by descending to Lukla, where you’ll take a flight back to Kathmandu.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>What You'll Experience</h2>
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Highlights</h3>
+            <ul>
+              <li>Mount Everest (8,848m)</li>
+              <li>Kala Patthar viewpoint</li>
+              <li>Namche Bazaar</li>
+              <li>Tengboche Monastery</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h3>Essential Medicines</h3>
+            <ul>
+              <li>Acetazolamide (Diamox)</li>
+              <li>Pain Relievers</li>
+              <li>Cold &amp; Flu Medicine</li>
+              <li>First Aid Supplies</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h3>Weather Conditions</h3>
+            <ul>
+              <li>Best seasons: Spring and Autumn</li>
+              <li>Temperature range: -20°C to 15°C</li>
+              <li>Clear mornings, cloudy afternoons</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h4>Contact Us</h4>
+          <p>Email: info@omghimalayas.com</p>
+          <p>Phone: +977-1-4XXXXXX</p>
+          <p>Address: Thamel, Kathmandu, Nepal</p>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Newsletter</h4>
+          <p>Subscribe for travel tips and offers</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Khatri. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.querySelector('nav');
+    const logo = document.getElementById('logo');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    const themeToggle = document.querySelector('.theme-toggle');
+    let isDark = false;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        nav.classList.add('sticky');
+      } else {
+        nav.classList.remove('sticky');
+      }
+    });
+
+    mobileMenu.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    themeToggle.addEventListener('click', () => {
+      isDark = !isDark;
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      themeToggle.textContent = isDark ? '🌜' : '🌞';
+      logo.src = isDark ? 'blacklogo.png' : 'logo.png';
+    });
+  </script>
+</body>
+</html>
